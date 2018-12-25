@@ -9,15 +9,7 @@ class ChatList extends Component {
 
         return (
             <div id="chatList">
-                <header className="font-1" id="appHeader">
-                    <h3>Hitme</h3>
-                </header>
-                <section id="sidebar-menu">
-                    {chatList}
-                </section>
-                <footer>
-                    <a href="#">New Chat</a>
-                </footer>
+                {chatList}                
             </div>
         )
     }

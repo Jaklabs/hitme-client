@@ -4,26 +4,35 @@ import NewChat from './NewChat/NewChat'
 export default class Sidebar extends Component {
     constructor(props) {
         super(props);
+        this.switchView = this.switchView.bind(this);
         this.state = {
-            screen: 'chat-list'
+            view: 'chatList',
+            chats: [
+              {title: "chat 1", id: '1', members: ['Alice', 'Bob', 'Charlie', 'Me'], messages: ['Hi', 'Ho']},
+              {title: "chat 2", id: '2', members: ['Alice', 'Bob', 'Charlie', 'Me'], messages: ['Hi', 'Ho']},
+              {title: "chat 3", id: '3', members: ['Alice', 'Bob', 'Charlie', 'Me'], messages: ['Hi', 'Ho']}
+            ]
         }
     }
+
+    switchView = (event) => {
+        let newView = (this.state.view === 'chatList' ? 'newChat' : 'chatList');
+        this.setState({ view: newView });
+    }
+
     render() {
-        if (this.state.screen == 'chat-list') {
-            let menu = <ChatList />;
-        } else {
-            let menu = <NewChat />;
-        }
+        let sidebarMenu = (this.state.view === 'chatList' ? <ChatList chats={this.state.chats}/> : <NewChat />);
+
         return (
         <div id="sidebar">
             <header className="font-1" id="appHeader">
                 <h3>Hitme</h3>
             </header>
             <section id="sidebar-menu">
-                { menu }
+                { sidebarMenu }
             </section>
             <footer>
-                <a href="#">New Chat</a>
+                <a href="#" onClick={this.switchView}>New Chat</a>
             </footer>
         </div>
         )

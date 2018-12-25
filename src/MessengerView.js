@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-// import MessengerView from './MessengerView';
 import ChatWindow from './Components/ChatWindow/ChatWindow';
 import Sidebar from './Components/Sidebar.js';
 import Login from './Components/Login/Login';
-class App extends Component {
+class MessengerView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,12 +12,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div id="messengerView">
         <Sidebar chats={this.state.chats}/>
         <ChatWindow chatID={this.state.chatID}/>
+        {/* <Login /> */}
       </div>
     )
   }
 }
 
-export default App;
+export default MessengerView;
